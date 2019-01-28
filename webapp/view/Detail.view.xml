@@ -1,0 +1,72 @@
+<mvc:View
+	controllerName="whr.com.br.ZLAREspelhoPontoGestor.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+
+	<Page showHeader="true" title="Espelho de Ponto Empregado" showFooter="true" showNavButton="true">
+		<content>
+			<ObjectHeader ariaLabelledBy="__xmlview0--nameColumnTitle" title="{Stext}" introActive="true" titleActive="true" id="header0"
+				backgroundDesign="Translucent"></ObjectHeader>
+			<l:VerticalLayout width="100%">
+				<fb:FilterBar reset="onReset" showRestoreButton="true" showClearButton="false" showFilterConfiguration="false" search="onPesquisar">
+					<fb:filterItems>
+						<fb:FilterItem name="A" label="Data Início">
+							<fb:control>
+								<DatePicker id="DataInicio" width="140px" placeholder="" displayFormat="dd/MM/yyyy" valueFormat="yyyy-MM-dd" change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</fb:control>
+						</fb:FilterItem>
+						<fb:FilterItem name="B" label="Data Fim">
+							<fb:control>
+								<DatePicker id="DataFim" width="140px" placeholder="" displayFormat="dd/MM/yyyy" valueFormat="yyyy-MM-dd" change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</fb:control>
+						</fb:FilterItem>
+					</fb:filterItems>
+				</fb:FilterBar>
+			</l:VerticalLayout>
+			<Table id="table" width="auto" items="{ path: '/ESPELHO_PONTOSet', sorter: { path: 'WDtOcor', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true" id="DataCOL" > 
+					<Text text="Data" id="Data" textAlign="Center"/> 
+					</Column> 
+					<Column  minScreenWidth="Tablet" demandPopin="true"  id="HoraPrevistoCOL">
+						<Text text="Horário Previsto" id="HoraPrevisto" textAlign="Center"/>
+					</Column>
+					<Column  minScreenWidth="Tablet" demandPopin="true" id="Quantidade1COL">
+						<Text text="Qtde. Horas" id="Quantidade1" textAlign="Center"/>
+					</Column>
+					<Column  minScreenWidth="Tablet" demandPopin="true" id="TurnoCOL">
+						<Text text="Turno" id="Turno" textAlign="Center"/>
+					</Column>
+					<Column  minScreenWidth="Tablet" demandPopin="true" id="HorarioRealizadoCOL">
+						<Text text="Horário realizado" id="HorarioRealizado" textAlign="Center"/>
+					</Column>
+					<Column  minScreenWidth="Tablet" demandPopin="true" id="Quantidade2COL">
+						<Text text="Qtde. Horas" id="Quantidade2" textAlign="Center"/>
+					</Column>
+					<Column  minScreenWidth="Tablet" demandPopin="true" id="ObservacoesCol" hAlign="End">
+						<Text text="Observações" id="Observacoes" textAlign="Center"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Inactive">
+						<cells>
+							<Text text="{path: 'WDtOcor', formatter: '.formatDate'}" id="WDtOcor"  />
+							<Text xmlns="sap.m" text="{HoraPrevisto}" id="HoraPrevist" />
+							<Text xmlns="sap.m" text="{WSollz}" id="WSollz" />
+							<Text xmlns="sap.m" text="{WSchkz}" id="WSchkz" />
+							<Text xmlns="sap.m" text="{HoraRealizado}" id="HoraRealizado" />
+							<Text text="{path: 'WSobeg', formatter: '.formatTime'}" id="WSobeg" />
+							<Text xmlns="sap.m" text="{WEtext}" id="WEtext" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+
+</mvc:View>
